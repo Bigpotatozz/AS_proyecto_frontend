@@ -1,0 +1,26 @@
+
+
+nav{
+    padding: 1%;
+    border: solid 1px black;
+
+    ul{
+        display: flex;
+        list-style: none;
+        justify-content: center;
+
+        li{
+            margin: 1%;
+
+            a{
+                text-decoration: none;
+                color: black;
+                font-family: "Onest", sans-serif;
+                font-optical-sizing: auto;
+                font-style: normal;
+                font-weight: bolder;
+                font-size: 1em;
+            }
+        }
+    }
+}

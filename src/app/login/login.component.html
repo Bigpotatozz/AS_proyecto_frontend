@@ -1,11 +1,28 @@
 
 <div class="container">
 
-    <div class="imagen">
-        <img src="https://glocal.mx/wp-content/uploads/2020/08/Biblioteca-Tec-3-scaled.jpg">
-    </div>
-
     <div class="login">
-        <h1>Login test</h1>
+        <h1>Iniciar sesion</h1>
+
+        <div class="correo">
+            <p-floatLabel>
+                <input pInputText id="correo" [(ngModel)]="correo"/>
+                <label for="correo">Correo</label>
+            </p-floatLabel>
+        </div>
+    
+
+        <div class="contrasenia">
+            <p-floatLabel>
+                <input pInputText id="contrasenia" [(ngModel)]="contrasenia"/>
+                <label for="contrasenia">Contraseña</label>
+            </p-floatLabel>
+        </div>
+       
+
+        <div class="enviar">
+            <p-button label="Iniciar sesion" [raised]="true" (onClick)="login(correo, contrasenia)"/>
+        </div>
+        
     </div>
 </div>
