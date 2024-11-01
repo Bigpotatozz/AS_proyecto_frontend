@@ -1,5 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, Inject, OnInit, Output } from '@angular/core';
+import { AuthService } from '../service/auth/auth.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -8,23 +9,22 @@ import { Subscription } from 'rxjs';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit{
 
-  private subscription: Subscription = new Subscription();
-  constructor(private authService: AuthService) {}
+  rol: string | null = null;
 
-  ngOnInit() {
-    this.subscription = this.authService.user$.subscribe(user => {
-      this.userRole = user?.role || null;
-    });
+  constructor(@Inject(DOCUMENT) private document: Document){}
+
+  ngOnInit(): void {
+    const localStorage = this.document.defaultView?.localStorage;
+    if(localStorage){
+      this.rol = localStorage.getItem('rol');
+      alert(this.rol);
+      }
   }
 
+  
 
-  getRol(){
-    const rol  = localStorage.getItem('rol');
 
-    alert(rol);
-    return rol  
-  }
 
 }

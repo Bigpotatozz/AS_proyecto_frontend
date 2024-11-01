@@ -26,4 +26,11 @@ export class AuthService {
   }
 
 
-}
+  getRol(): string{
+    return localStorage.getItem('rol') || '';
+  }
+
+  setRol(rol: string){
+    localStorage.setItem('rol', rol);
+  }
+} 

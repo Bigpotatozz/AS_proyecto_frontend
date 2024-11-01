@@ -1,11 +1,22 @@
 <nav>
     <ul>
     
-    @if (rol == 'admin') {
-        <li><a href="#">Usuarios</a></li>
-    }
+
+
+        @if (rol === "ESTUDIANTE") {
+            <li><a href="#">Libros</a></li>
+        }   
       
-        <li><a href="#">Biblioteca</a></li>
-        <li><a href="#">Administracion de biblioteca</a></li>
+        @if (rol === "ADMINISTRADOR") {
+            <li><a href="#">Usuarios</a></li>
+        }   
+        @if (rol === "BIBLIOTECARIO") {
+            <li><a href="#">Biblioteca</a></li>
+        }   
+           
+          
+  
+      
+      
     </ul>
 </nav>

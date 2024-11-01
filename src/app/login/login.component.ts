@@ -27,8 +27,8 @@ export class LoginComponent {
   login(correo: string, contrasenia: string){
     this.authService.login(correo, contrasenia).subscribe((response) => {
       console.log(response);
+      this.authService.setRol(response.usuario.rol);
       this.router.navigate(['/home']);
-      localStorage.setItem('rol', response.usuario.rol);
       return response;
     }, (error) => {
       return error;
