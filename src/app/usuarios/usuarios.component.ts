@@ -34,6 +34,10 @@ export class UsuariosComponent implements OnInit{
   rolForm: FormGroup; 
   roles: any[];
 
+  nombre_registro: string = ''; 
+  correo_registro: string = '';
+  contrasenia_registro: string = '';
+
   
 
   constructor(private usuarioService: UsuarioService, private fb: FormBuilder){
@@ -73,7 +77,22 @@ export class UsuariosComponent implements OnInit{
       console.log(response);
       this.getUsuarios();
       this.visible = false;
+      window.location.reload();
     });
+  }
+
+  registrarUsuario(usuario: {nombre: string, correo: string, contrasenia: string}){
+
+    let rol = this.rolForm.get('selectedRole')?.value;
+
+    this.usuarioService.createUsuario({nombre: usuario.nombre, correo: usuario.correo, contrasenia: usuario.contrasenia, rol: rol.value}).subscribe((response) => {
+      console.log(response);
+      this.getUsuarios();
+      this.visible2 = false;
+    });
+
+
+
   }
 
 }

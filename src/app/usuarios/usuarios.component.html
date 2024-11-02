@@ -22,21 +22,21 @@
                 <div class="input-group">
                     <div class="input-label">Nombre:</div>
                     <div class="input-field">
-                        <input pInputText autocomplete="off" />
+                        <input pInputText autocomplete="off" [(ngModel)]="nombre_registro" />
                     </div>
                 </div>
         
                 <div class="input-group">
                     <div class="input-label">Correo:</div>
                     <div class="input-field">
-                        <input pInputText  autocomplete="off" />
+                        <input pInputText  autocomplete="off" [(ngModel)]="correo_registro"/>
                     </div>
                 </div>
         
                 <div class="input-group">
                     <div class="input-label">Contraseña:</div>
                     <div class="input-field">
-                        <input pInputText type="password"  autocomplete="off" />
+                        <input pInputText type="password"  autocomplete="off"  [(ngModel)]="contrasenia_registro"/>
                     </div>
                 </div>
         
@@ -62,7 +62,7 @@
                         </p-button>
                         <p-button 
                             label="Save" 
-                        >
+                        (onClick)="registrarUsuario({nombre: nombre_registro, correo: correo_registro, contrasenia: contrasenia_registro})">
                         </p-button>
                     </div>
                 </div>

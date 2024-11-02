@@ -9,9 +9,10 @@ export interface UsuarioResponse {
 }
 
 export interface UsuarioRequest{
-    id_usuario: number;
     nombre: string;
     correo: string;
+    contrasenia: string;
+    rol: string;
 }
 
 export interface UsuarioUpdate{

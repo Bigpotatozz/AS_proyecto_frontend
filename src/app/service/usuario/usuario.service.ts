@@ -37,4 +37,16 @@ export class UsuarioService {
 
     return response;
   }
+
+  createUsuario(usuario: UsuarioRequest): Observable<any>{
+    const url = 'http://localhost:8081/api/usuarios/registrarUsuario';
+    let response = this.http.post<any>(url, usuario).pipe(
+      catchError((error) => {
+        console.log(error)
+        throw error;
+      })
+    )
+
+    return response;
+  }
 }
