@@ -31,6 +31,7 @@ export class LoginComponent {
       this.router.navigate(['/home']);
       return response;
     }, (error) => {
+      alert('ERROR AL INICIAR SESION');
       return error;
     })
   }

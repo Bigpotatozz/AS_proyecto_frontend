@@ -19,7 +19,6 @@ export class NavbarComponent implements OnInit{
     const localStorage = this.document.defaultView?.localStorage;
     if(localStorage){
       this.rol = localStorage.getItem('rol');
-      alert(this.rol);
       }
   }
 

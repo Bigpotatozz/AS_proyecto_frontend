@@ -1,0 +1,141 @@
+<nav>
+    <app-navbar></app-navbar>
+</nav>
+
+<div class="container">
+
+
+
+    <div class="tabla">
+
+        <div class="agregarButton">
+            <div class="card flex justify-content-center">
+                <p-button label="Agregar usuario" (onClick)="showDialog2()" />
+            <p-dialog 
+            header="Edit Profile" 
+            [modal]="true" 
+            [(visible)]="visible2" 
+            [style]="{ width: '400px' }" 
+            styleClass="custom-dialog">
+            
+            <div class="modal-content">
+                <div class="input-group">
+                    <div class="input-label">Nombre:</div>
+                    <div class="input-field">
+                        <input pInputText autocomplete="off" />
+                    </div>
+                </div>
+        
+                <div class="input-group">
+                    <div class="input-label">Correo:</div>
+                    <div class="input-field">
+                        <input pInputText  autocomplete="off" />
+                    </div>
+                </div>
+        
+                <div class="input-group">
+                    <div class="input-label">Contraseña:</div>
+                    <div class="input-field">
+                        <input pInputText type="password"  autocomplete="off" />
+                    </div>
+                </div>
+        
+                <div class="input-group">
+                    <div class="input-label">Rol:</div>
+                    <div class="input-field">
+                        <form [formGroup]="rolForm">
+                            <p-dropdown 
+                                formControlName="selectedRole" 
+                                [options]="roles"
+                                optionLabel="name"
+                                placeholder="Selecciona un rol" />
+                        </form>
+                    </div>
+                </div>
+        
+                <div class="card flex justify-content-center">
+                    <div class="button-group">
+                        <p-button 
+                            label="Cancel" 
+                            styleClass="p-button-secondary"
+                            (onClick)="visible2 = false">
+                        </p-button>
+                        <p-button 
+                            label="Save" 
+                        >
+                        </p-button>
+                    </div>
+                </div>
+                
+            </div>
+        </p-dialog>
+            </div>
+        </div>
+
+
+        <p-table [value]="usuarios" [tableStyle]="{'min-width': '60rem'}" [paginator]="true" [rows]="5">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="nombre" style="width:20%">
+                        Nombre <p-sortIcon field="nombre" />
+                    </th>
+                    <th pSortableColumn="correo" style="width:20%">
+                        Correo<p-sortIcon field="correo" />
+                    </th>
+                    <th pSortableColumn="rol" style="width:20%">
+                        Rol <p-sortIcon field="rol" />
+                    </th>
+                    <th pSortableColumn="estatus" style="width:20%">
+                        Estatus <p-sortIcon field="estatus" />
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-usuario>
+                <tr>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.correo }}</td>
+                    <td>{{ usuario.rol }}</td>
+                    <td>{{ usuario.estatus }}</td>
+                    <td class="acciones">
+                        <i class="pi pi-pencil" (click)="showDialog(usuario)" [style]="{cursor: 'pointer'}"></i>
+                        <p-dialog header="Modificar usuario" [(visible)]="visible" [modal]="true"
+                            [style]="{width: '450px'}" styleClass="p-fluid">
+
+                            <div class="dialog-content">
+
+                                <div class="field mb-4">
+                                    <label for="nombre" class="block mb-2">Actualizar nombre</label>
+                                    <input pInputText id="nombre" class="w-full" autocomplete="off"
+                                        [(ngModel)]="nombre" />
+                                </div>
+
+                                <div class="field mb-4">
+                                    <label for="correo" class="block mb-2">Actualizar correo</label>
+                                    <input pInputText id="correo" class="w-full" autocomplete="off"
+                                        [(ngModel)]="correo" />
+                                </div>
+                            </div>
+
+                            <ng-template pTemplate="footer">
+                                <div class="flex justify-content-end gap-2">
+                                    <p-button label="Cancel" icon="pi pi-times" (onClick)="visible = false"
+                                        styleClass="p-button-text">
+                                    </p-button>
+                                    <p-button label="Save" icon="pi pi-check"
+                                        (onClick)="actualizarUsuario({nombre: nombre, correo: correo})">
+                                    </p-button>
+                                </div>
+                            </ng-template>
+                        </p-dialog>
+                    </td>
+
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+
+
+
+</div>

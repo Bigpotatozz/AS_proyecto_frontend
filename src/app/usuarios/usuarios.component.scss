@@ -1,0 +1,35 @@
+
+.tabla{
+    padding: 100px;
+
+    
+    .agregarButton{
+
+        .card{
+            display: flex;
+            justify-content: end;
+            margin: 15px;
+
+            ::ng-deep .p-dialog{
+                
+            
+
+                .input{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 15px;
+                }
+
+                .botones{
+                    display: flex;
+                    justify-content: end;
+                    
+                    ::ng-deep .p-button{
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
