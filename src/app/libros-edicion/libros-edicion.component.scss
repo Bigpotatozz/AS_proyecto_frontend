@@ -1,31 +1,48 @@
+/* Asegurar que el scrollbar siempre esté visible */
+:host ::ng-deep {
+    body {
+        overflow-y: scroll !important;
+    }
 
-.tabla{
+    /* Evitar que el diálogo modal afecte al scrollbar */
+    .p-dialog-mask {
+        overflow-y: auto !important;
+        position: fixed !important;
+    }
+
+    .p-dialog {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .p-dialog-content {
+        overflow-y: auto;
+        max-height: calc(90vh - 120px);
+    }
+}
+
+.tabla {
     padding: 100px;
-
     
-    .agregarButton{
-
-        .card{
+    .agregarButton {
+        .card {
             display: flex;
             justify-content: end;
             margin: 15px;
 
-            ::ng-deep .p-dialog{
-                
-            
-
-                .input{
+            ::ng-deep .p-dialog {
+                .input {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     margin: 15px;
                 }
 
-                .botones{
+                .botones {
                     display: flex;
                     justify-content: end;
                     
-                    ::ng-deep .p-button{
+                    ::ng-deep .p-button {
                         margin-right: 5px;
                     }
                 }
@@ -33,9 +50,21 @@
         }
     }
 
-
     #pdf {
         width: 100%;
         height: 800px;
     }
+}
+
+/* Asegurar que el contenedor principal tenga scroll si es necesario */
+.main-container {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+/* Asegurar que la tabla tenga scroll si es necesario */
+.p-datatable {
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
 }

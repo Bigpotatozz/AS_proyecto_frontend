@@ -97,23 +97,39 @@
                     <td>{{ libro.genero }}</td>
                     <td>{{ libro.universidad }}</td>
                     <td class="acciones">
-                        <i class="pi pi-pencil" (click)="showDialog()" [style]="{cursor: 'pointer'}"></i>
-                        <p-dialog header="Modificar usuario" [(visible)]="visible" [modal]="true"
+                        <i class="pi pi-pencil" (click)="showDialog(libro)" [style]="{cursor: 'pointer'}"></i>
+                        <p-dialog header="Modificar Libro" [(visible)]="visible" [modal]="true"
                             [style]="{width: '450px'}" styleClass="p-fluid">
 
                             <div class="dialog-content">
 
-                                <div class="field mb-4">
-                                    <label for="nombre" class="block mb-2">Actualizar nombre</label>
-                                    <input pInputText id="nombre" class="w-full" autocomplete="off"
-                                        [(ngModel)]="nombre" />
+                                <div class="input-group">
+                                    <div class="input-label">Nombre:</div>
+                                    <div class="input-field">
+                                        <input pInputText type="text"  autocomplete="off"  [(ngModel)]="nombre_modificar"/>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-label">Autor:</div>
+                                    <div class="input-field">
+                                        <input pInputText type="text"  autocomplete="off"  [(ngModel)]="autor_modificar"/>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-label">Genero:</div>
+                                    <div class="input-field">
+                                        <input pInputText type="text"  autocomplete="off"  [(ngModel)]="genero_modificar"/>
+                                    </div>
+                                </div>
+                               
+                                <div class="input-group">
+                                    <div class="input-label">Libro:</div>
+                                    <div class="input-field">
+                                        <input type="file" #fileInput2 (change)="onFileSelected2($event)" [accept]="'.pdf'">
+                                    </div>
                                 </div>
 
-                                <div class="field mb-4">
-                                    <label for="correo" class="block mb-2">Actualizar correo</label>
-                                    <input pInputText id="correo" class="w-full" autocomplete="off"
-                                         />
-                                </div>
+                                
                             </div>
 
                             <ng-template pTemplate="footer">
@@ -122,7 +138,7 @@
                                         styleClass="p-button-text">
                                     </p-button>
                                     <p-button label="Save" icon="pi pi-check"
-                                       >
+                                       (onClick)="modificarLibro({nombre: nombre_modificar, autor: autor_modificar, genero: genero_modificar})">
                                     </p-button>
                                 </div>
                             </ng-template>

@@ -40,4 +40,22 @@ export class LibroService {
 
     return response;
   }
+
+  updateLibro(libro: string, archivo: File, id: number){
+      
+    const formData = new FormData();
+    formData.append('data', libro);
+    formData.append('libro', archivo);
+
+
+    const url = `http://localhost:8081/api/libros/modificarLibro/${id}`;
+    let response = this.http.put<any>(url, formData).pipe(
+      catchError((error) => {
+        console.log(error)
+        throw error;
+      })
+    )
+
+    return response;
+  }
 }
