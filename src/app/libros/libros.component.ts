@@ -44,7 +44,7 @@ export class LibrosComponent  implements OnInit{
 
 
   getLibros(){
-    this.librosService.obtenerLibros().subscribe((response) => {
+    this.librosService.obtenerLibrosTodo().subscribe((response) => {
       this.libros = response;
       return response;
     })

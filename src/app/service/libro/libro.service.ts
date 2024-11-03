@@ -24,6 +24,19 @@ export class LibroService {
   }
 
 
+  obtenerLibrosTodo(){
+    const url = 'http://localhost:8081/api/libros/obtenerLibrosTodo';
+
+    let response = this.http.get<LibroResponse[]>(url).pipe(
+      catchError((error) => {
+        console.log(error)
+        throw error;
+      })
+    )
+
+    return response
+  }
+
   createLibro(libro: string, archivo: File){
 
     const formData = new FormData();
