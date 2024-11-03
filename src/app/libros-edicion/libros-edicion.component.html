@@ -14,7 +14,7 @@
             <div class="card flex justify-content-center">
                 <p-button label="Agregar libro" (onClick)="showDialog2()" />
             <p-dialog 
-            header="Edit Profile" 
+            header="Agregar libro" 
             [modal]="true" 
             [(visible)]="visible2" 
             [style]="{ width: '400px' }" 
@@ -38,7 +38,7 @@
                 <div class="input-group">
                     <div class="input-label">Genero:</div>
                     <div class="input-field">
-                        <input pInputText type="password"  autocomplete="off"  [(ngModel)]="genero"/>
+                        <input pInputText type="text"  autocomplete="off"  [(ngModel)]="genero"/>
                     </div>
                 </div>
 
